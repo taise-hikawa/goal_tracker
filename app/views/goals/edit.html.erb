@@ -1,2 +1,17 @@
-<h1>Goals#edit</h1>
-<p>Find me in app/views/goals/edit.html.erb</p>
+<h1>目標を編集</h1>
+
+<%= form_with model: @goal do |form| %>
+  <div>
+    <%= form.label :title, "タイトル" %>
+    <%= form.text_field :title %>
+  </div>
+  <div>
+    <%= form.label :description, "説明" %>
+    <%= form.text_area :description %>
+  </div>
+  <div>
+    <%= form.label :deadline, "期限" %>
+    <%= form.date_field :deadline %>
+  </div>
+<%end%>
+<%= link_to "一覧に戻る", goals_path %>
