@@ -40,6 +40,8 @@ class GoalsController < ApplicationController
     redirect_to goals_path
   end
 
+  private
+
   def goal_params
     params.require(:goal).permit(:title, :description, :deadline)
   end
