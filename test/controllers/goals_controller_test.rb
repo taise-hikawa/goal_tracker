@@ -22,4 +22,22 @@ test "should get edit" do
   get edit_goal_url(goal)  # ← GoalsController の edit アクションを呼ぶ
   assert_response :success
 end
+test "should update goal" do
+  goal = Goal.create(title: "古いタイトル", description: "古い説明", deadline: Date.today)
+
+  patch goal_url(goal), params: {
+    goal: {
+      title: "新しいタイトル",
+      description: "新しい説明",
+      deadline: Date.tomorrow
+    }
+  }
+
+  assert_redirected_to goals_path
+
+  goal.reload
+  assert_equal "新しいタイトル", goal.title
+  assert_equal "新しい説明", goal.description
+  assert_equal Date.tomorrow, goal.deadline
+end
 end
