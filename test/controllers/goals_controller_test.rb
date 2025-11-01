@@ -40,4 +40,13 @@ test "should update goal" do
   assert_equal "新しい説明", goal.description
   assert_equal Date.tomorrow, goal.deadline
 end
+test "should destroy goal" do
+  goal = Goal.create(title: "削除される目標", description: "説明", deadline: Date.today)
+
+  assert_difference("Goal.count", -1) do
+    delete goal_url(goal)
+  end
+
+  assert_redirected_to goals_path
+end
 end
