@@ -1,2 +1,8 @@
-<h1>Goals#show</h1>
-<p>Find me in app/views/goals/show.html.erb</p>
+<h1><%= @goal.title %></h1>
+
+<p><strong>説明:</strong></p>
+<p><%= @goal.description %></p>
+
+<p><strong>期限:</strong> <%= @goal.deadline %></p>
+
+<%= link_to "一覧に戻る", goals_path %>
